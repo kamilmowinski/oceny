@@ -1,11 +1,27 @@
 <div>
-  <span x-large>Your Content Here</span>
-  <input type="text" [value]="title.value" (input)="title.value = $event.target.value" autofocus>
-  <!--
-    Rather than wiring up two-way data-binding ourselves
-    we can use Angular's [(ngModel)] syntax
-    <input type="text" [(ngModel)]="title.value">
-  -->
+  <span x-large>Imiona:</span>
+  <input type="text" [value]="names" (input)="names = $event.target.value" autofocus>
+  <span x-large>Nazwisko:</span>
+  <input type="text" [value]="surname" (input)="surname = $event.target.value">
+  <span x-large>Numer indeksu:</span>
+  <input type="number" [value]="index" (input)="index = $event.target.value">
+  <br>
+  <select [value]="droped" (input)="droped = $event.target.value">
+    <option value="0">Sprawozdanie 1</option>
+    <option value="2">Sprawozdanie 2</option>
+    <option value="5">Sprawozdanie 4</option>
+    <option value="6">Sprawozdanie 5</option>
+    <option value="7">Sprawozdanie 6</option>
+    <option value="8">Sprawozdanie 7</option>
+    <option value="9">Sprawozdanie 8</option>
+    <option value="10">Sprawozdanie 9</option>
+    <option value="11">Sprawozdanie 10</option>
+    <option value="12">Sprawozdanie 11</option>
+    <option value="13">Sprawozdanie 12</option>
+  </select>
+  <button (click)="calculate()">Sprawdź</button>
 
-  <pre>this.title = {{ title | json }}</pre>
+  <div [hidden]="!studentGrade.length">
+    <pre>{{ studentGrade | json }}</pre>
+  </div>
 </div>

@@ -5,7 +5,7 @@ import {
   beforeEachProviders,
   TestComponentBuilder
 } from 'angular2/testing';
-import {Title} from './title';
+import {Title} from './grade';
 
 describe('Title', () => {
   let title;

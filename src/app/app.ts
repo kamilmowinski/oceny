@@ -17,23 +17,7 @@ import {Home} from './home/home';
   directives: [ ...ROUTER_DIRECTIVES ],
   pipes: [],
   styles: [],
-  template: `
-    <header>
-      <nav>
-        <h1>Hello {{ name }}</h1>
-        <a [routerLink]=" ['Index'] ">Index</a>
-        <a [routerLink]=" ['Home'] ">Home</a>
-      </nav>
-    </header>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-    <footer>
-      WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
-    </footer>
-  `
+  template: require('./layout.html')
 })
 @RouteConfig([
   { path: '/', component: Home, name: 'Index' },
@@ -41,8 +25,7 @@ import {Home} from './home/home';
   { path: '/**', redirectTo: ['Index'] }
 ])
 export class App {
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
+  name = 'Oceny 2016 - Systemy Czasu Rzeczywistego';
   constructor() {
 
   }
