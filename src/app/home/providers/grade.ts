@@ -1,5 +1,5 @@
 import {Injectable} from 'angular2/core';
-import {Http} from "angular2/http";
+import {Http} from 'angular2/http';
 
 @Injectable()
 export class Grade {
@@ -9,17 +9,17 @@ export class Grade {
       .map(res => res.json())
       .subscribe(
         data => this.grades = data,
-        err => console.log("Error", err),
-        () => console.log("Loaded data")
+        err => console.log('Error', err),
+        () => console.log('Loaded data')
       );
   }
 
   getGrade(names, surname, index) {
-    for(var ind in this.grades) {
+    for (var ind in this.grades) {
       var grade = this.grades[ind];
-      if(grade[0] == names && grade[1] == surname && grade[2] == index) {
+      if (grade[0] === names && grade[1] === surname && grade[2] === parseInt(index)) {
         return grade.slice(3).map(function(item) {
-          return item == '-' ? 0 : item;
+          return item === '-' ? 0 : item;
         });
       }
     }

@@ -5,16 +5,16 @@ import {
   beforeEachProviders,
   TestComponentBuilder
 } from 'angular2/testing';
-import {Title} from './grade';
+import {Grade} from './grade';
 
-describe('Title', () => {
-  let title;
+describe('Grade', () => {
+  let grade;
 
   beforeEach(() => {
-    title = new Title();
+
   });
 
-  it('should return the list of names', () => {
-    expect(title.value).toEqual('Angular 2');
+  it('should return the list of grades', () => {
+
   });
 });

@@ -28,35 +28,35 @@ import {XLarge} from './directives/x-large';
   template: require('./home.html')
 })
 export class Home {
-  names = "Panajotis Damian";
-  surname = "Daras";
-  index = "209117";
+  names = '';
+  surname = '';
+  index = '000000';
   studentGrade = [];
   maxPoints = [15.0, 0.0, 12.0, 0.0, 0.0, 14.0, 14.0, 20.0, 15.0, 15.0, 15.0, 15.0, 10.0];
   droped = -1;
-  suma = 0;
-  max = 0;
+  ocena = 0;
   constructor(public grade: Grade) {
 
   }
 
   calculate() {
-    this.suma = 0;
-    this.max = 0;
-    var dropInd = this.droped;
-    console.log(dropInd);
+    var suma = 0;
+    var max = 0;
     this.studentGrade = this.grade.getGrade(this.names, this.surname, this.index);
-    for(var i in this.maxPoints) {
-      if(i != dropInd) {
-        if(!isNaN(parseInt(this.studentGrade[i]))) {
-          this.suma += parseInt(this.studentGrade[i]);
-          this.max += this.maxPoints[i];
+    console.log(this.studentGrade);
+    for (var i in this.maxPoints) {
+      console.log(i, this.droped, i !== this.droped);
+      if (i !== this.droped) {
+        if (!isNaN(parseInt(this.studentGrade[i]))) {
+          suma += parseInt(this.studentGrade[i]);
+          max += this.maxPoints[i];
         } else {
-          console.log("Odrzucam", this.maxPoints[i], this.studentGrade[i])
+          console.log('Odrzucam', this.maxPoints[i], this.studentGrade[i]);
         }
       }
-      this.studentGrade[i] += " z " + this.maxPoints[i].toFixed(2);
+      this.studentGrade[i] += ' z ' + this.maxPoints[i].toFixed(2);
     }
-    console.log(this.suma, "z", this.max);
+    console.log(suma, 'z', max);
+    this.ocena = Math.floor((suma/max) * 10000)/100;
   }
 }
