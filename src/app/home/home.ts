@@ -6,9 +6,6 @@ import {Grade} from './providers/grade';
 import {XLarge} from './directives/x-large';
 
 @Component({
-  // The selector is what angular internally uses
-  // for `document.querySelectorAll(selector)` in our index.html
-  // where, in this case, selector is the string 'app'
   selector: 'home',  // <home></home>
   // We need to tell Angular's Dependency Injection which providers are in our app.
   providers: [
@@ -33,6 +30,7 @@ export class Home {
   index = '000000';
   studentGrade = [];
   maxPoints = [15.0, 0.0, 12.0, 0.0, 0.0, 14.0, 14.0, 20.0, 15.0, 15.0, 15.0, 15.0, 10.0];
+  number = ['1', '1 dodatkowe', '2', '2 dodatkowe', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
   droped = -1;
   ocena = 0;
   constructor(public grade: Grade) {
@@ -43,20 +41,16 @@ export class Home {
     var suma = 0;
     var max = 0;
     this.studentGrade = this.grade.getGrade(this.names, this.surname, this.index);
-    console.log(this.studentGrade);
     for (var i in this.maxPoints) {
-      console.log(i, this.droped, i !== this.droped);
       if (i !== this.droped) {
         if (!isNaN(parseInt(this.studentGrade[i]))) {
           suma += parseInt(this.studentGrade[i]);
           max += this.maxPoints[i];
-        } else {
-          console.log('Odrzucam', this.maxPoints[i], this.studentGrade[i]);
         }
       }
-      this.studentGrade[i] += ' z ' + this.maxPoints[i].toFixed(2);
+      this.studentGrade[i] = 'Sprawozdanie ' + this.number[i] + ': ' +
+                              this.studentGrade[i] + ' z ' + this.maxPoints[i].toFixed(2);
     }
-    console.log(suma, 'z', max);
-    this.ocena = Math.floor((suma/max) * 10000)/100;
+    this.ocena = Math.floor ( (suma / max) * 10000) / 100;
   }
 }

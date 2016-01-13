@@ -1,7 +1,7 @@
 <div>
-  <span x-large>Imiona:</span>
+  <span x-large>Imiona (bez polskich znaków np. Blazej Jan):</span>
   <input type="text" [value]="names" (input)="names = $event.target.value" autofocus>
-  <span x-large>Nazwisko:</span>
+  <span x-large>Nazwisko (bez polskich znaków np. Mowinski):</span>
   <input type="text" [value]="surname" (input)="surname = $event.target.value">
   <span x-large>Numer indeksu:</span>
   <input type="number" [value]="index" (input)="index = $event.target.value">
